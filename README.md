@@ -21,4 +21,4 @@ Quant project analyzing the dynamic relationship between Microsoft and Amazon st
 
 ## Report
 
-The report is also available in Markdown: [result_analysis.md](/Users/medvegygabor/Desktop/msft_amzn/result_analysis.md)
+The report is also available in Markdown: [result_analysis.md](result_analysis.md)

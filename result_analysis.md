@@ -37,7 +37,7 @@ Then the datasets were combined in a common dataframe based on their date values
 
 To get a broad perspective of the dataset, different functions were run, which, for example confirmed what I would expect based on the nature of the dataset, that there are no missing values. While the average logarithmized closing price of Microsoft is 5.97 and its median is 6.02, Amazon's logarithmized values are lower, with an average of 5.12 and a median of 5.20, and based on the fact that in both cases the mean is a little bit lower than the median, it can be assumed that there is a slight asymmetry in the distributions and also that the values of Microsoft are generally higher than Amazon's.
 
-![Comparison of the Amazon and Microsoft log closing prices](/Users/medvegygabor/Desktop/msft_amzn/figures/page-05-img-01-Im1.png)
+![Comparison of the Amazon and Microsoft log closing prices](figures/page-05-img-01-Im1.png)
 
 *Figure 1. Comparison between the Amazon and the Microsoft log closing prices.*
 
@@ -45,9 +45,9 @@ However, in the case of standard deviation and total range, Amazon has larger va
 
 For the logarithmized Microsoft closing stock prices, based on the histogram, there is a strong concentration around 6, which is almost equivalent to the mean and the median, however based on these two values and a skewness of -0.67, it can be stated that it is a mildly left-skewed distribution. In the case of Amazon's logarithmized closing prices, as it has a higher standard deviation, there is a larger spread between the values, and as can be observed on the histogram and in the results of the `describe()` function with a -0.66 skewness value, this distribution is also mildly left-skewed. As for kurtosis, both distributions have negative values, which indicates that they are flatter than a normal distribution would be.
 
-![Distribution of log closing prices for Microsoft](/Users/medvegygabor/Desktop/msft_amzn/figures/page-06-img-01-Im2.png)
+![Distribution of log closing prices for Microsoft](figures/page-06-img-01-Im2.png)
 
-![Distribution of log closing prices for Amazon](/Users/medvegygabor/Desktop/msft_amzn/figures/page-06-img-02-Im3.png)
+![Distribution of log closing prices for Amazon](figures/page-06-img-02-Im3.png)
 
 *Figure 2. Distributions of Amazon and Microsoft log closing prices.*
 
@@ -93,7 +93,7 @@ The ADF tests applied to the original series of AMZN and MSFT indicate non-stati
 
 After taking first differences, visually it seems taking the first difference was enough to reach stationarity, but I also conducted the proper statistical tests to confirm this finding: the ADF tests strongly reject the null hypothesis of non-stationarity for both AMZN and MSFT, with p-values below 1%. This confirms formally that the differenced series are stationary. Taken together, these results imply that both stock price series are integrated of order one, I(1).
 
-![Differenced stationary time series of Amazon and Microsoft](/Users/medvegygabor/Desktop/msft_amzn/figures/page-10-img-01-Im6.png)
+![Differenced stationary time series of Amazon and Microsoft](figures/page-10-img-01-Im6.png)
 
 *Figure 3. The differentiated stationary time series of Amazon and Microsoft.*
 
@@ -103,17 +103,17 @@ The Box-Jenkins methodology was then applied to the first-differenced stock pric
 
 Consequently, a Breusch-Godfrey test for autocorrelation was conducted up to lag 24. The test fails to reject the null hypothesis of no autocorrelation (`p-value = 0.869`), indicating that the differenced Amazon series behaves as white noise.
 
-![ACF on Amazon log returns](/Users/medvegygabor/Desktop/msft_amzn/figures/page-10-img-02-Im7.png)
+![ACF on Amazon log returns](figures/page-10-img-02-Im7.png)
 
-![PACF on Amazon log returns](/Users/medvegygabor/Desktop/msft_amzn/figures/page-10-img-03-Im8.png)
+![PACF on Amazon log returns](figures/page-10-img-03-Im8.png)
 
 *Figure 4. The ACF and PACF on Amazon log returns.*
 
 Similar results are obtained for Microsoft, the ACF and PACF plots show no significant autocorrelations, providing no evidence for AR or MA components. The Breusch-Godfrey test up to lag 24 also fails to reject the null hypothesis of no serial correlation (`p-value = 0.4647`), confirming the absence of autocorrelation in the differenced Microsoft series. Overall, the Box-Jenkins analysis indicates that both differentiated stock price series can be characterized as white noise processes, no additional AR or MA terms are required.
 
-![ACF on Microsoft log returns](/Users/medvegygabor/Desktop/msft_amzn/figures/page-11-img-01-Im9.png)
+![ACF on Microsoft log returns](figures/page-11-img-01-Im9.png)
 
-![PACF on Microsoft log returns](/Users/medvegygabor/Desktop/msft_amzn/figures/page-11-img-02-Im10.png)
+![PACF on Microsoft log returns](figures/page-11-img-02-Im10.png)
 
 *Figure 5. The ACF and PACF on Microsoft log returns.*
 
@@ -137,9 +137,9 @@ Stability checks indicate that both VAR models are stable and stationary. All ch
 
 Granger causality tests based on the VAR(1) model show that Microsoft Granger-causes Amazon at the 5% significance level, while the reverse causality is non-significant. The impulse response functions align with these findings. A shock to Microsoft generates an immediate and noticeable response in Amazon's returns. This effect is short-lived, as the response quickly converges back to zero within a few periods. In the very short run, the confidence intervals do not fully include zero, indicating that the response is statistically significant. In contrast, a shock to Amazon does not produce a statistically significant response in Microsoft's prices, since confidence intervals consistently include zero.
 
-![Orthogonal impulse response from d_MSFT](/Users/medvegygabor/Desktop/msft_amzn/figures/page-13-img-01-Im11.png)
+![Orthogonal impulse response from d_MSFT](figures/page-13-img-01-Im11.png)
 
-![Orthogonal impulse response from d_AMZN](/Users/medvegygabor/Desktop/msft_amzn/figures/page-13-img-02-Im12.png)
+![Orthogonal impulse response from d_AMZN](figures/page-13-img-02-Im12.png)
 
 *Figure 6. The Impulse Response Functions on the log returns of Amazon and Microsoft.*
 
